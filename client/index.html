@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- add.html -->
+<html>
+  <head></head>
+  <body>
+    <script type="module">
+
+    (async() => {
+
+	console.log("Loading...");
+
+	fetch('/client/test.wasm').then(response => {
+
+		return response.arrayBuffer();
+
+	}).then(bytes => {
+
+		return WebAssembly.instantiate(bytes);
+
+	}).then(obj => {
+
+		let result = obj.instance.exports.fib(15);
+
+		console.log(result);
+
+	});
+
+    })();
+
+    </script>
+  </body>
+</html>
