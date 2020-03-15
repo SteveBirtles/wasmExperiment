@@ -5,7 +5,21 @@
   <body>
     <script type="module">
 
+
+	function fib(n) {
+		if (n <= 1) return 1;
+		return fib(n - 1) + fib(n - 2);
+	}
+
+	let start = Date.now();
+
+	console.log(fib(42));
+
+	console.log(Date.now() - start);
+
     (async() => {
+
+	
 
 	console.log("Loading...");
 
@@ -19,9 +33,14 @@
 
 	}).then(obj => {
 
-		let result = obj.instance.exports.fib(15);
+
+		let start = Date.now();
+	
+		let result = obj.instance.exports.fib(42);
 
 		console.log(result);
+
+		console.log(Date.now() - start);
 
 	});
 
